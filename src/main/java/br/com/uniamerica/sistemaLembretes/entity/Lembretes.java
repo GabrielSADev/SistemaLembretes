@@ -13,20 +13,8 @@ public class Lembretes extends  AbstractEntity{
     @Column(name = "lembrete")
     private String lembrete;
 
-    @Getter @Setter
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinTable(name = "lembretes_pessoa",
-        uniqueConstraints = @UniqueConstraint(
-                columnNames ={
-                    "lembretes_id","pessoa_id"
-                }
-        ),
-            joinColumns = @JoinColumn(
-                    name = "lembretes_id"
-            ),
-            inverseJoinColumns = @JoinColumn(
-                    name = "pessoa_Id"
-            )
-    )
+    @Setter
+    @ManyToOne
+    @JoinColumn(name = "pessoa_id")
     private Pessoa pessoa;
 }
