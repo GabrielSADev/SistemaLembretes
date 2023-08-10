@@ -28,6 +28,20 @@ public class PessoaController {
         return ResponseEntity.ok(this.pessoaRep.findAll());
     }
 
+    @GetMapping("/nomePessoa")
+    public ResponseEntity<?> buscarPorNome(@RequestParam("nomePessoa") String nomePessoa) {
+        try {
+           Pessoa pessoa1 = pessoaRep.findByNomePessoa(nomePessoa);
+            if (pessoa1 != null) {
+                return ResponseEntity.ok(pessoa1);
+            } else {
+                return ResponseEntity.internalServerError().body("Error: caiu no Else ");
+            }
+        } catch (Exception e) {
+            return ResponseEntity.internalServerError().body("Error: " + e.getMessage());
+        }
+    }
+
     @PostMapping
     public ResponseEntity <?> cadastrarPessoa(@RequestBody final  Pessoa pessoa){
         try {
