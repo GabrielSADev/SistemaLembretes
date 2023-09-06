@@ -32,7 +32,7 @@ public class LembretesService {
     final Lembretes lembretesBranco = this.lembretesRep.findById(id).orElse(null);
 
         if (lembretesBranco == null || !lembretesBranco.getId().equals(id)){
-            throw new RuntimeException("Não foi possivel identificar o modelo informado.");
+            throw new RuntimeException("Não foi possivel identificar o lembrete informado.");
         }
 
         this.lembretesRep.delete(lembretesBranco);

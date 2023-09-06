@@ -8,6 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 @RequestMapping (value = "/api/pessoa")
 public class PessoaController {
@@ -17,14 +19,30 @@ public class PessoaController {
     @Autowired
     private PessoaService pessoaService;
 
+    /*
     @GetMapping("/{id}")
-    public ResponseEntity<?> findByIdPath(@PathVariable("id") final Long id){
+    public ResponseEntity<?> findByIdPath(@PathVariable Long id){
+        final Pessoa pessoa = this.pessoaRep.findById(id).orElse(null);
+        return ResponseEntity.ok(pessoaService);
+    }
+
+     */
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Pessoa> findByIdPath(@PathVariable Long id){
         final Pessoa pessoa = this.pessoaRep.findById(id).orElse(null);
         return ResponseEntity.ok(pessoa);
     }
 
+    /*
     @GetMapping("/lista")
     public ResponseEntity <?> ListaPessoa(){
+        return ResponseEntity.ok(this.pessoaRep.findAll());
+    }
+     */
+
+    @GetMapping("/lista")
+    public ResponseEntity <List<Pessoa>> ListaPessoa(){
         return ResponseEntity.ok(this.pessoaRep.findAll());
     }
 

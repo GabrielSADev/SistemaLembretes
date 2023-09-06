@@ -15,6 +15,16 @@ public class Pessoa extends AbstractEntity {
     private String nomePessoa;
 
     @Getter @Setter
+    @Column(name = "id_Pessoa")
+    private Long id;
+
+    @Getter @Setter
     @OneToMany(mappedBy = "pessoa", fetch = FetchType.EAGER)
     private List<Lembretes> lembretes;
+
+    public Pessoa(){}
+    public Pessoa(String nomePessoa, Long id) {
+        this.nomePessoa = nomePessoa;
+        this.id = id;
+    }
 }

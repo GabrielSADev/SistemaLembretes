@@ -13,8 +13,21 @@ public class Lembretes extends  AbstractEntity{
     @Column(name = "lembrete")
     private String lembrete;
 
+    @Id
+    @Getter
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
+    private Long id;
+
     @Setter
     @ManyToOne
     @JoinColumn(name = "pessoa_id")
     private Pessoa pessoa;
+
+    public Lembretes(){}
+
+    public Lembretes(String lembrete, Long id) {
+        this.lembrete = lembrete;
+        this.id = id;
+    }
 }

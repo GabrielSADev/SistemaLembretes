@@ -10,7 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-@Controller
+@RestController
 @RequestMapping ( value =  "/api/lembrete")
 public class LembretesController {
 
@@ -20,7 +20,7 @@ public class LembretesController {
         private LembretesService lembretesService;
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> findByIdPath(@PathVariable("id") final Long id){
+    public ResponseEntity<Lembretes> findByIdPath(@PathVariable Long id){
         final Lembretes lembretes = this.lembretesRep.findById(id).orElse(null);
         return ResponseEntity.ok(lembretes);
     }
